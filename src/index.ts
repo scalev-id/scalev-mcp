@@ -27,6 +27,18 @@ export class MyMCP extends McpAgent<Env, unknown, MCPProps> {
 export default {
   fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const url = new URL(request.url);
+    const authHeader = request.headers.get("authorization");
+
+    if (!authHeader?.startsWith("Bearer ")) {
+      return new Response("Forbidden", { status: 403 });
+    }
+
+    const apiKey = authHeader.split(/\s+/)[1] ?? "";
+
+    ctx.props.clientProps = {
+      ...ctx.props.clientProps,
+      apiKey,
+    };
 
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
       // @ts-ignore
