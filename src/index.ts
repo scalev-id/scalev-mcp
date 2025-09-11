@@ -17,9 +17,11 @@ type MCPProps = {
  * The information displayed on the OAuth consent screen
  */
 const serverConfig: ServerConfig = {
-  orgName: "ScalevAPI",
-  instructionsUrl: undefined, // Set a url for where you show users how to get an API key
-  logoUrl: undefined, // Set a custom logo url to appear during the OAuth flow
+  orgName: "Scalev",
+  instructionsUrl:
+    "https://developers.scalev.id/docs/authentication-with-api-key#/",
+  logoUrl:
+    "https://cdn.scalev.id/Business/Fy5iqWh2PJQt_CSYqqzoNJf8GZ97gotCnNZjMxpa4qA/1734245697968-scalev_logo_small.webp",
   clientProperties: [
     {
       key: "apiKey",
