@@ -1,4 +1,4 @@
-# ScalevAPI Remote MCP Server
+# Scalev Remote MCP Server
 
 This MCP server is available at:
 
