@@ -6,12 +6,14 @@ export class MyMCP extends McpAgent {
 
   async init() {
     const token = this.props.bearerToken as string;
+    const workerToken = this.props.workerToken as string;
 
     initMcpServer({
       server: this.server,
       clientOptions: {
         defaultHeaders: {
           Authorization: `Bearer ${token}`,
+          "X-CF-Worker-Token": workerToken,
         },
       },
       mcpOptions: {},
@@ -30,6 +32,7 @@ export default {
 
     const token = authHeader.split(/\s+/)[1] ?? "";
     ctx.props.bearerToken = token;
+    ctx.props.workerToken = env.CF_WORKER_TOKEN;
 
     if (url.pathname === "/sse" || url.pathname === "/sse/message") {
       // @ts-ignore
